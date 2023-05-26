@@ -1,10 +1,5 @@
-C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\appsettings.json
 C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\WebApi.exe
-C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\WebApi.deps.json
-C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\WebApi.runtimeconfig.json
 C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\WebApi.dll
-C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\WebApi.pdb
 C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\Azure.Core.dll
 C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\Azure.Core.Amqp.dll
 C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\Azure.Messaging.ServiceBus.dll
@@ -14,6 +9,11 @@ C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\Micr
 C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\Azure.Storage.Blobs.dll
+C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\Azure.Storage.Common.dll
+C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\appsettings.json
+C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\System.IO.Hashing.dll
 C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\System.Memory.Data.dll
 C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\obj\Debug\net6.0\WebApi.csproj.AssemblyReference.cache
 C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\obj\Debug\net6.0\WebApi.GeneratedMSBuildEditorConfig.editorconfig
@@ -29,8 +29,8 @@ C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\obj\Debug\net6.0\WebA
 C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\obj\Debug\net6.0\WebApi.dll
 C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\obj\Debug\net6.0\refint\WebApi.dll
 C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\obj\Debug\net6.0\WebApi.pdb
+C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\WebApi.deps.json
+C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\WebApi.runtimeconfig.json
+C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\WebApi.pdb
 C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\obj\Debug\net6.0\WebApi.genruntimeconfig.cache
 C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\obj\Debug\net6.0\ref\WebApi.dll
-C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\Azure.Storage.Blobs.dll
-C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\Azure.Storage.Common.dll
-C:\Users\BUF\Desktop\MUNI\6semester\PA200\HW04\CODE\WebApi\bin\Debug\net6.0\System.IO.Hashing.dll

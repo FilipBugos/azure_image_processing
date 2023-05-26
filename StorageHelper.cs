@@ -52,9 +52,9 @@ namespace space
             return filename2;
         }
 
-        public static async Task<List<string>> GetThumbNailUrls(AzureStorageConfig _storageConfig)
+        public static async Task<string> GetThumbNailUrls(String id, AzureStorageConfig _storageConfig)
         {
-            List<string> thumbnailUrls = new List<string>();
+            /*List<string> thumbnailUrls = new List<string>();
 
             // Create a URI to the storage account
             Uri accountUri = new Uri("https://" + _storageConfig.AccountName + ".blob.core.windows.net/");
@@ -73,7 +73,17 @@ namespace space
                 }
             }
 
-            return await Task.FromResult(thumbnailUrls);
+            return await Task.FromResult(thumbnailUrls);*/
+            id = id + "_result.jpg";
+            Uri blobUri = new Uri("https://pa200hw04storageaccount.blob.core.windows.net/blobstoragecontainer/" + id);
+
+            StorageSharedKeyCredential storageCredentials = new StorageSharedKeyCredential("pa200hw04storageaccount", "SU1ZgpCxb2Zz+BIoXIHEAJBANbfehFd7EXd0Z/dnZVlr1U9C2mo8ODqg/ldFq9dhLLUfXt2SyksZ+AStesxpWw==");
+
+            BlobClient blobClient = new BlobClient(blobUri, storageCredentials);
+
+            var content = await blobClient.DownloadContentAsync();
+
+            return blobUri.AbsoluteUri;
         }
     }
 }

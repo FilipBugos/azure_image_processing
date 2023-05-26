@@ -6,14 +6,14 @@ namespace space
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class ImageController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<ImageController> _logger;
         private readonly IConfiguration _config;
         private readonly AzureStorageConfig _configBlob; 
         private readonly string _blobConfigAccountKey;
@@ -22,7 +22,7 @@ namespace space
         private readonly ServiceBusService _serviceBus;
 
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IConfiguration config)
+        public ImageController(ILogger<ImageController> logger, IConfiguration config)
         {
             _logger = logger;
             _config = config;
@@ -61,6 +61,7 @@ namespace space
                 if (_configBlob.ImageContainer == string.Empty)
                     return BadRequest("Please provide a name for your image container in the azure blob storage");
 
+                var uploadedPhotoId = "";
                 foreach (var formFile in files)
                 {
                     if (StorageHelper.IsImage(formFile))
@@ -69,7 +70,7 @@ namespace space
                         {
                             using (Stream stream = formFile.OpenReadStream())
                             {
-                                var uploadedPhotoId = await StorageHelper.UploadFileToStorage(stream, formFile.FileName, _configBlob);
+                                uploadedPhotoId = await StorageHelper.UploadFileToStorage(stream, formFile.FileName, _configBlob);
                                 await _serviceBus.method(uploadedPhotoId);
                             }
                         }
@@ -80,10 +81,14 @@ namespace space
                     }
                 }
 
+                if (uploadedPhotoId == "")
+                {
+                    return StatusCode(500);
+                }
                 //if (isUploaded)
                 //{
                   //  if (_configBlob.ThumbnailContainer != string.Empty)
-                        return Ok();
+                return Ok(uploadedPhotoId);
                //     else
                  //       return new AcceptedResult();
                 //}
@@ -97,7 +102,7 @@ namespace space
         }
 
         [HttpGet("receiveimage")]
-        public async Task<IActionResult> GetThumbNails()
+        public async Task<IActionResult> GetThumbNails(String photoId)
         {
             try
             {
@@ -107,8 +112,8 @@ namespace space
                 if (_configBlob.ImageContainer == string.Empty)
                     return BadRequest("Please provide a name for your image container in Azure blob storage.");
 
-                List<string> thumbnailUrls = await StorageHelper.GetThumbNailUrls(_configBlob);
-                return new ObjectResult(thumbnailUrls);            
+                var data = await StorageHelper.GetThumbNailUrls(photoId, _configBlob);
+                return Ok(data);            
             }
             catch (Exception ex)
             {
