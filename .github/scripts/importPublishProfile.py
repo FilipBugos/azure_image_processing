@@ -52,7 +52,10 @@ def main():
 
         if publish_profiles:
             print("Publish Profiles:")
-            print("success")
+            
+            env_file = os.getenv('GITHUB_ENV')
+            with open(env_file, "a") as myfile:
+                myfile.write(f"PUBLISH-PROFILES={publish_profiles}")
         else:
             print("Failed to retrieve publish profiles.")
     else:
