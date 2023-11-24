@@ -27,3 +27,6 @@ jobs:
           WEB_APP_NAME: ${{ secrets.WEB_APP_NAME }}
           WEB_APP_RESOURCE_GROUP_NAME: ${{ secrets.WEB_APP_RESOURCE_GROUP_NAME }}
         run: python ./.github/scripts/importPublishProfile.py
+
+      - name: github env
+        run: echo $GITHUB_ENV
