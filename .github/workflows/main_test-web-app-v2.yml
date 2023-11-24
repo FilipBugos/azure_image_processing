@@ -4,9 +4,9 @@
 name: Build and deploy ASP.Net Core app to Azure Web App - test-web-app-v2
 
 on:
-  push:
-    branches:
-      - main
+ # push:
+  #  branches:
+   #   - main
   workflow_dispatch:
 
 jobs:
@@ -42,6 +42,30 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     
     steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4.7.1
+
+      - name: run pip
+        run: pip install azure-identity && pip install requests
+
+      - name: Initiliaze file to set publish profiles to git
+        run: echo "{name}={value}" >> $GITHUB_ENV
+        
+      - name: run script
+        env: 
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+          AZURE_SUBS_ID: ${{ secrets.AZURE_SUBS_ID }}
+          WEB_APP_NAME: ${{ secrets.WEB_APP_NAME }}
+          WEB_APP_RESOURCE_GROUP_NAME: ${{ secrets.WEB_APP_RESOURCE_GROUP_NAME }}
+        run: python ./.github/scripts/importPublishProfile.py
+
+      - name: Get publish profiles
+       # run: ${{ env.PUBLISH-PROFILES }}
+    
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
@@ -54,4 +78,4 @@ jobs:
           app-name: 'test-web-app-v2'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1D9FBA1819A349828DB7E6F8DB21ABA4 }}
+          publish-profile: ${{ env.PUBLISH-PROFILES }}
