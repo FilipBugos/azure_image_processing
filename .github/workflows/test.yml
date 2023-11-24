@@ -32,4 +32,4 @@ jobs:
         run: python ./.github/scripts/importPublishProfile.py
 
       - name: Get publish profiles
-        run: echo ${{ env.PUBLISH-PROFILES }}
+        run: ${{ env.PUBLISH-PROFILES }}
