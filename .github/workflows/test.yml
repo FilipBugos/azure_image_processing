@@ -18,6 +18,9 @@ jobs:
       - name: run pip
         run: pip install azure-identity && pip install requests
 
+      - name: Initiliaze file to set publish profiles to git
+        run: echo "{name}={value}" >> $GITHUB_ENV
+        
       - name: run script
         env: 
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
@@ -28,5 +31,5 @@ jobs:
           WEB_APP_RESOURCE_GROUP_NAME: ${{ secrets.WEB_APP_RESOURCE_GROUP_NAME }}
         run: python ./.github/scripts/importPublishProfile.py
 
-      - name: github env
-        run: cat $GITHUB_ENV
+      - name: Get publish profiles
+        run: echo ${{ env.PUBLISH-PROFILES }}
