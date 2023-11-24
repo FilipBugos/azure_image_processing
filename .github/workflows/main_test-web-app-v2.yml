@@ -63,7 +63,7 @@ jobs:
           WEB_APP_RESOURCE_GROUP_NAME: ${{ secrets.WEB_APP_RESOURCE_GROUP_NAME }}
         run: python ./.github/scripts/importPublishProfile.py
 
-      - name: Get publish profiles
+      #- name: Get publish profiles
        # run: ${{ env.PUBLISH-PROFILES }}
     
       - name: Download artifact from build job
