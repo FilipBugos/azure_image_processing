@@ -76,6 +76,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'test-web-app-v2'
-          slot-name: 'Production'
+          #slot-name: 'Production'
           package: .
           publish-profile: ${{ env.PUBLISH-PROFILES }}
