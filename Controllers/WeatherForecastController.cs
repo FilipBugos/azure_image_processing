@@ -67,7 +67,7 @@ namespace space
             KeyVaultSecret secret = client.GetSecret("secret");
 
             string secretValue = secret.Value;
-            _logger.LogInformation("Value: ", secretValue);
+            _logger.LogInformation("Value: " + secretValue);
 
             try
             {
