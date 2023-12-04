@@ -26,28 +26,26 @@ namespace space
             return formats.Any(item => file.FileName.EndsWith(item, StringComparison.OrdinalIgnoreCase));
         }
 
-        public static async Task<String> UploadFileToStorage(Stream fileStream, string fileName,
-                                                            AzureStorageConfig _storageConfig
+        public static async Task<String> UploadFileToStorage(Stream fileStream,
+                                                            string connectionString
                                                             )
         {
             var filename2 = Guid.NewGuid().ToString();
-            // Create a URI to the blob
-            Uri blobUri = new Uri("https://" +
-                                  _storageConfig.AccountName +
-                                  ".blob.core.windows.net/" +
-                                  _storageConfig.ImageContainer +
-                                  "/" + filename2);
+            // Create a BlobServiceClient
+            var blobServiceClient = new BlobServiceClient(connectionString);
 
-            // Create StorageSharedKeyCredentials object by reading
-            // the values from the configuration (appsettings.json)
-            StorageSharedKeyCredential storageCredentials =
-                new StorageSharedKeyCredential(_storageConfig.AccountName, _storageConfig.AccountKey);
+            // Get a reference to a container
+            var blobContainerClient = blobServiceClient.GetBlobContainerClient("scuserfile");
+            await blobContainerClient.CreateIfNotExistsAsync();
 
-            // Create the blob client.
-            BlobClient blobClient = new BlobClient(blobUri, storageCredentials);
+            // Get a reference to a blob
+            var blobClient = blobContainerClient.GetBlobClient(filename2);
 
-            // Upload the file
-            await blobClient.UploadAsync(fileStream);
+            // Upload the image file to the blob
+            using (fileStream)
+            {
+                await blobClient.UploadAsync(fileStream, true);
+            }
 
             return filename2;
         }

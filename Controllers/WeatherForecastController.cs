@@ -67,18 +67,15 @@ namespace space
             KeyVaultSecret secret = client.GetSecret("secret");
 
             string secretValue = secret.Value;
-            _logger.LogInformation("Value: " + secretValue);
+            //_logger.LogInformation("Value: " + secretValue);
 
             try
             {
                 if (files.Count == 0)
                     return BadRequest("No files received from the upload");
 
-                if (_configBlob.AccountKey == string.Empty || _configBlob.AccountName == string.Empty)
-                    return BadRequest("sorry, can't retrieve your azure storage details from appsettings.js, make sure that you add azure storage details there");
-
-                if (_configBlob.ImageContainer == string.Empty)
-                    return BadRequest("Please provide a name for your image container in the azure blob storage");
+                if (String.IsNullOrEmpty(secretValue))
+                    return BadRequest("Missing connection string for azure storage");
 
                 var uploadedPhotoId = "";
                 foreach (var formFile in files)
@@ -89,8 +86,8 @@ namespace space
                         {
                             using (Stream stream = formFile.OpenReadStream())
                             {
-                                uploadedPhotoId = await StorageHelper.UploadFileToStorage(stream, formFile.FileName, _configBlob);
-                                await _serviceBus.method(uploadedPhotoId);
+                                uploadedPhotoId = await StorageHelper.UploadFileToStorage(stream, secretValue);
+                                // await _serviceBus.method(uploadedPhotoId);
                             }
                         }
                     }
@@ -100,19 +97,11 @@ namespace space
                     }
                 }
 
-                if (uploadedPhotoId == "")
-                {
-                    return StatusCode(500);
-                }
-                //if (isUploaded)
-                //{
-                  //  if (_configBlob.ThumbnailContainer != string.Empty)
+                // if (uploadedPhotoId == "")
+                // {
+                //     return StatusCode(500);
+                // }
                 return Ok(uploadedPhotoId);
-               //     else
-                 //       return new AcceptedResult();
-                //}
-                //lse
-                   // return BadRequest("Look like the image couldnt upload to the storage");
             }
             catch (Exception ex)
             {
