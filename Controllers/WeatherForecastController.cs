@@ -1,3 +1,7 @@
+using Azure.Core;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using WebApi;
@@ -10,8 +14,8 @@ namespace space
     {
         private static readonly string[] Summaries = new[]
         {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        };
 
         private readonly ILogger<ImageController> _logger;
         private readonly IConfiguration _config;
@@ -48,7 +52,22 @@ namespace space
         [HttpPost(Name = "sendimage")]
         public async Task<IActionResult> Upload(ICollection<IFormFile> files)
         {
-            bool isUploaded = false;
+            SecretClientOptions options = new SecretClientOptions()
+            {
+                Retry =
+                {
+                    Delay= TimeSpan.FromSeconds(2),
+                    MaxDelay = TimeSpan.FromSeconds(16),
+                    MaxRetries = 5,
+                    Mode = RetryMode.Exponential
+                }
+            };
+            var client = new SecretClient(new Uri("https://kv-image-processing.vault.azure.net/"), new DefaultAzureCredential(),options);
+
+            KeyVaultSecret secret = client.GetSecret("secret");
+
+            string secretValue = secret.Value;
+            _logger.LogInformation("Value: ", secretValue);
 
             try
             {
@@ -99,6 +118,12 @@ namespace space
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        [HttpGet("signin-oidc")]
+        public void SignIn(String photoId)
+        {
+            Console.WriteLine("Signed in");
         }
 
         [HttpGet("receiveimage")]
