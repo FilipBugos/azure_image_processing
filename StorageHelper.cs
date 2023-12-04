@@ -39,7 +39,7 @@ namespace space
             await blobContainerClient.CreateIfNotExistsAsync();
 
             // Get a reference to a blob
-            var blobClient = blobContainerClient.GetBlobClient(filename2);
+            var blobClient = blobContainerClient.GetBlobClient(filename2 + ".png");
 
             // Upload the image file to the blob
             using (fileStream)
