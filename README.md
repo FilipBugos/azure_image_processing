@@ -1,0 +1,1 @@
+This is the project that is related to azure-image_processing_infra_repo which deploys an infrastructure for the code in this project. For now, only image_processing_app is relevant.
