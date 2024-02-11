@@ -1,0 +1,46 @@
+name: Deploy infrastructure
+
+on:
+  workflow_dispatch:
+jobs:
+  deploye-infrastructure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4.7.1
+
+      - name: run pip
+        run: pip install azure-storage-blob 
+            
+      - name: Azure Login
+        uses: Azure/login@v1.4.6
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Azure Blob Storage Download
+        env: 
+          AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+          AZURE_STORAGE_CONTAINER_NAME: ${{ secrets.AZURE_STORAGE_CONTAINER_NAME }}
+        run: python ./scripts/downloadTFstate.py
+          
+      - uses: hashicorp/terraform-cdk-action@v0.1.45
+        env:
+          TENANT_ID: ${{ secrets.TENANT_ID }}
+          OBJECT_ID: ${{ secrets.OBJECT_ID }}
+        with:
+          workingDirectory: ./azure_image_processing_infra
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          # mode: 'auto-approve-apply'
+          mode: 'auto-approve-apply'
+          stackName: azure_image_processing_infra
+          
+      - name: Azure Blob Storage Upload
+        env: 
+          AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+          AZURE_STORAGE_CONTAINER_NAME: ${{ secrets.AZURE_STORAGE_CONTAINER_NAME }}
+        run: cd ./scripts && python ./uploadTFstate.py
+        
+
+        

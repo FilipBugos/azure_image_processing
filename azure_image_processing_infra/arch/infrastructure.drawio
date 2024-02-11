@@ -1,0 +1,134 @@
+<mxfile host="65bd71144e">
+    <diagram id="HipVTTgwmFh0iq62WFtj" name="Page-1">
+        <mxGraphModel dx="2547" dy="1228" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="8" value="Resource Group" style="fontStyle=0;verticalAlign=top;align=center;spacingTop=-2;fillColor=none;rounded=0;whiteSpace=wrap;html=1;strokeColor=#919191;strokeWidth=2;dashed=1;container=1;collapsible=0;expand=0;recursiveResize=0;" parent="1" vertex="1">
+                    <mxGeometry x="170" y="260" width="670" height="610" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Storage account" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/storage/Storage_Accounts.svg;" parent="8" vertex="1">
+                    <mxGeometry x="90" y="515" width="65" height="52" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="App service plan" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/app_services/App_Service_Plans.svg;" parent="8" vertex="1">
+                    <mxGeometry x="81" y="330" width="64" height="64" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="App service" style="sketch=0;aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/mscae/App_Services.svg;" parent="8" vertex="1">
+                    <mxGeometry x="70" y="260" width="50" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="Storage container" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/general/Storage_Container.svg;" parent="8" vertex="1">
+                    <mxGeometry x="330" y="112" width="64" height="52" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Key vault" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/security/Key_Vaults.svg;" parent="8" vertex="1">
+                    <mxGeometry x="30" y="80" width="68" height="68" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="Function app" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/compute/Function_Apps.svg;" parent="8" vertex="1">
+                    <mxGeometry x="500" y="260" width="68" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/integration/Service_Bus.svg;" parent="8" vertex="1">
+                    <mxGeometry x="305.5" y="255" width="68" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Service bus queue" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.queue;fillColor=#D9A741;gradientColor=none;" parent="8" vertex="1">
+                    <mxGeometry x="300" y="302" width="73.5" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="" style="endArrow=classicThin;html=1;strokeWidth=1;endSize=20;" edge="1" parent="8" source="5" target="4">
+                    <mxGeometry width="100" relative="1" as="geometry">
+                        <mxPoint x="330" y="340" as="sourcePoint"/>
+                        <mxPoint x="430" y="340" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="31" value="3" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="20">
+                    <mxGeometry x="-0.2795" y="-1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="21" value="" style="endArrow=classicThin;html=1;strokeWidth=1;endSize=20;" edge="1" parent="8" source="4" target="2">
+                    <mxGeometry width="100" relative="1" as="geometry">
+                        <mxPoint x="330" y="340" as="sourcePoint"/>
+                        <mxPoint x="430" y="340" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="32" value="4" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="21">
+                    <mxGeometry x="-0.4366" y="2" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="" style="endArrow=classicThin;html=1;strokeWidth=1;endSize=20;entryX=-0.057;entryY=0.208;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.488;exitY=0.012;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="8" source="5" target="16">
+                    <mxGeometry width="100" relative="1" as="geometry">
+                        <mxPoint x="330" y="280" as="sourcePoint"/>
+                        <mxPoint x="430" y="280" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="30" value="2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="22">
+                    <mxGeometry x="-0.1743" relative="1" as="geometry">
+                        <mxPoint y="1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="23" value="" style="endArrow=classicThin;html=1;strokeWidth=1;endSize=20;exitX=1.021;exitY=0.634;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="8" source="16" target="2">
+                    <mxGeometry width="100" relative="1" as="geometry">
+                        <mxPoint x="330" y="280" as="sourcePoint"/>
+                        <mxPoint x="430" y="280" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="34" value="5" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="23">
+                    <mxGeometry x="0.3387" y="-1" relative="1" as="geometry">
+                        <mxPoint x="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="24" value="" style="endArrow=none;dashed=1;html=1;" edge="1" parent="8" source="5" target="6">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="360" y="310" as="sourcePoint"/>
+                        <mxPoint x="410" y="260" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="26" value="Load secrets" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="24">
+                    <mxGeometry x="0.2164" y="1" relative="1" as="geometry">
+                        <mxPoint x="-7" y="8" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" value="" style="endArrow=classic;html=1;exitX=0.359;exitY=-0.046;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.01;entryY=0.182;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="8" source="2" target="16">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="360" y="310" as="sourcePoint"/>
+                        <mxPoint x="410" y="260" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="33" value="6" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="25">
+                    <mxGeometry x="-0.2184" y="-2" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="27" value="" style="endArrow=classic;html=1;" edge="1" parent="8" source="16" target="5">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="360" y="340" as="sourcePoint"/>
+                        <mxPoint x="410" y="290" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="35" value="7" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="27">
+                    <mxGeometry x="0.151" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/networking/DNS_Zones.svg;" parent="1" vertex="1">
+                    <mxGeometry x="-30" y="680" width="64" height="64" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="Resource group" style="sketch=0;aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/mscae/ResourceGroup.svg;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="850" width="50" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="" style="shape=mxgraph.cisco.computers_and_peripherals.web_browser;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" parent="1" vertex="1">
+                    <mxGeometry x="-30" y="510" width="62" height="64" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="" style="endArrow=classicThin;html=1;strokeWidth=1;endSize=20;" edge="1" parent="1" target="5">
+                    <mxGeometry width="100" relative="1" as="geometry">
+                        <mxPoint x="40" y="540" as="sourcePoint"/>
+                        <mxPoint x="570" y="600" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="18">
+                    <mxGeometry x="-0.4076" y="-3" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
